@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>MiM</h1>
+    <h1>MiMe</h1>
     <form @submit.prevent="getGifs">
       <input v-model="searchGif" type="text" />
       <button class="button" @keyup.enter="getGifs">Search</button>
