@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>MiMe</h1>
+    <h1 class="text-grey-900">MiMe</h1>
     <form @submit.prevent="getGifs">
-      <input v-model="searchGif" type="text" />
-      <button class="button" @keyup.enter="getGifs">Search</button>
+      <input v-model="searchGif" class="border" type="text" />
+      <button class="border" @keyup.enter="getGifs">Search</button>
     </form>
 
     <div class="">
