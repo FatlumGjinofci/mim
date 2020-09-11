@@ -8,8 +8,8 @@
 
 
     <div class="flex flex-col pt-10">
-        <div class="w-full lg:w-1/2 mx-auto" v-for="gif in gifs" :key="gif.id">
-            <img  class="p-2 rounded-lg shadow-2xl" :src="gif" />
+        <div class="w-full lg:w-1/2 mx-auto" v-for="gif in gifs" :key="gif.id" @click="copyLink()" >
+            <img class="p-2 rounded-lg shadow-2xl" :src="gif"/>
         </div>
     </div>
   </div>
@@ -23,6 +23,7 @@ export default {
     return {
         searchGif: "",
         gifs: [],
+        url: ""
     };
   },
 
@@ -41,6 +42,7 @@ export default {
             .catch((error) => console.log(error));
         },
       buildGifs(json) {
+        this.gifs = json.data.data;
           this.gifs = json.data.data
             .map((gif) => gif.id)
             .map((gifId) => {
@@ -48,7 +50,7 @@ export default {
             });
         },
       copyLink() {
-          console.log(this.$clipboard('test img'));
+        console.log(this.gifs)
       }
   },
 };
