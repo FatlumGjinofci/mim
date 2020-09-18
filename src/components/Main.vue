@@ -18,6 +18,8 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -47,12 +49,21 @@ export default {
       },
     copySrc: function(img){
       this.src = img.srcElement.src;
-      this.$clipboard(this.src);
-      this.$notify({
-        group: 'gif',
-        title: 'm3m3',
-        text: 'GIF copied ;)'
-      });
+
+      // this.$clipboard(this.src);
+
+      axios({url: this.src, method: 'GET', responseType: 'blob'})
+        .then((response) => {
+          let fileUrl = window.URL.createObjectURL(new Blob([response.data]))
+          let fileLink = document.createElement('a')
+
+          fileLink.href = fileUrl
+
+          fileLink.setAttribute('download', 'img.gif')
+          document.body.appendChild(fileLink)
+
+          fileLink.click()
+        })
     }
   },
   created() {
