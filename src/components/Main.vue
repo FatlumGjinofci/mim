@@ -7,20 +7,24 @@
     </form>
 
 
-    <div class="flex flex-col pt-10">
+    <!-- <div class="flex flex-col pt-10">
         <div class="w-full lg:w-1/2 mx-auto" v-for="gif in gifs" :key="gif.id" @click="copySrc">
             <img class="p-2 rounded-lg shadow-2xl" :src="gif.images.original.url"/>
-<!--            <div>{{ src }}</div>-->
         </div>
-    </div>
+    </div> -->
+    <Trending :gifs="gifs"/>
   </div>
 </template>
 
 <script>
 
 import axios from 'axios'
+import Trending from './Giphy/Trending'
 
 export default {
+  components: {
+    Trending
+  },
   data() {
     return {
       src: "",
