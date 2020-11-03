@@ -1,7 +1,7 @@
 <template>
   <div class="py-4">
       <p class="uppercase text-xl font-bold text-gray-900">Trending Gifs</p>
-      <hooper :settings="hooperSettings"  class="outline-none py-6" pagination="no">
+      <hooper :settings="hooperSettings"  class="h-auto outline-none py-6" pagination="no">
         <slide v-for="(gif, indx) in newGifs" :key="indx" :index="indx">
             <!-- {{ slide }} -->
             <img class="p-2 rounded-lg shadow-2xl" :src="gif.images.original.url" @click="copySrc"/>
